@@ -22,7 +22,6 @@ import org.springframework.security.oauth2.provider.client.ClientCredentialsToke
 import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
 import org.springframework.security.oauth2.provider.code.AuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.code.AuthorizationCodeTokenGranter;
-import org.springframework.security.oauth2.provider.code.InMemoryAuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.code.JdbcAuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.implicit.ImplicitTokenGranter;
 import org.springframework.security.oauth2.provider.password.ResourceOwnerPasswordTokenGranter;
@@ -187,9 +186,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 //token存到redis
                 .tokenStore(tokenStore)
                 .tokenGranter(tokenGranter())
+                .authorizationCodeServices(authorizationCodeServices())
                 //开启密码授权类型
                 .authenticationManager(authenticationManager)
-                .authorizationCodeServices(new JdbcAuthorizationCodeServices(dataSource))
                 // 告诉spring security token的生成方式
                 .accessTokenConverter(accessTokenConverter)
                 //接收GET和POST
@@ -205,8 +204,13 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         return new DefaultOAuth2RequestFactory(clientDetails());
     }
 
-    private AuthorizationCodeServices authorizationCodeServices() {
-        return new InMemoryAuthorizationCodeServices();
+    /**
+     * 设置授权码验证模式授权码的存放地方 -- 我们这里存放在数据库中
+     */
+    @Primary
+    @Bean
+    public AuthorizationCodeServices authorizationCodeServices() {
+        return new JdbcAuthorizationCodeServices(dataSource);
     }
 
 
@@ -216,11 +220,10 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     private List<TokenGranter> getDefaultTokenGranters() {
         ClientDetailsService clientDetails = clientDetails();
         AuthorizationServerTokenServices tokenServices = tokenServices();
-        AuthorizationCodeServices authorizationCodeServices = authorizationCodeServices();
         OAuth2RequestFactory requestFactory = requestFactory();
 
-        List<TokenGranter> tokenGranters = new ArrayList<TokenGranter>();
-        tokenGranters.add(new AuthorizationCodeTokenGranter(tokenServices, authorizationCodeServices, clientDetails, requestFactory));
+        List<TokenGranter> tokenGranters = new ArrayList<>();
+        tokenGranters.add(new AuthorizationCodeTokenGranter(tokenServices, authorizationCodeServices(), clientDetails, requestFactory));
         tokenGranters.add(new RefreshTokenGranter(tokenServices, clientDetails, requestFactory));
         ImplicitTokenGranter implicit = new ImplicitTokenGranter(tokenServices, clientDetails, requestFactory);
         tokenGranters.add(implicit);
