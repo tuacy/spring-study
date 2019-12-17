@@ -1,0 +1,27 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea
+spring-study.iml
+
+# starter
+starter/starter.iml
+
+# business
+business/business.iml
+
+business/user-manager/user-manager.iml
+business/user-manager/target
+
+# core
+core/core.iml
+
+core/security-oauth/security-oauth.iml
+core/security-oauth/target
+
+# microservice
+microservice/microservice.iml
+
+microservice/eureka/eureka.iml
+microservice/eureka/target
+
+microservice/zuul/zuul.iml
+microservice/zuul/target
