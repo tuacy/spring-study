@@ -215,29 +215,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
 
     /**
-     * 这是从spring 的代码中 copy出来的,默认的几个 TokenGranter, 我们自定义的就加到这里就行了,目前我还没有加
-     */
-    private List<TokenGranter> getDefaultTokenGranters() {
-        ClientDetailsService clientDetails = clientDetails();
-        AuthorizationServerTokenServices tokenServices = tokenServices();
-        OAuth2RequestFactory requestFactory = requestFactory();
-
-        List<TokenGranter> tokenGranters = new ArrayList<>();
-        tokenGranters.add(new AuthorizationCodeTokenGranter(tokenServices, authorizationCodeServices(), clientDetails, requestFactory));
-        tokenGranters.add(new RefreshTokenGranter(tokenServices, clientDetails, requestFactory));
-        ImplicitTokenGranter implicit = new ImplicitTokenGranter(tokenServices, clientDetails, requestFactory);
-        tokenGranters.add(implicit);
-        tokenGranters.add(new ClientCredentialsTokenGranter(tokenServices, clientDetails, requestFactory));
-        if (authenticationManager != null) {
-            tokenGranters.add(new ResourceOwnerPasswordTokenGranter(authenticationManager, tokenServices, clientDetails, requestFactory));
-        }
-        // 增加一种验证码的认证模式
-        tokenGranters.add(new SMSCodeTokenGranter(tokenServices, clientDetails, requestFactory, userDetailsService, smsRecordService));
-        return tokenGranters;
-    }
-
-    /**
-     * 多增加一种授权模式（oath2之前是有四种验证模式:授权码模式,简化模式,密码模式,客户端模式），比如我们添加一个短信验证码的认知模式
+     * 增加次方法是为了多增加一种授权模式（oath2之前是有四种验证模式:授权码模式,简化模式,密码模式,客户端模式），比如我们添加一个短信验证码的认证模式
      */
     private TokenGranter tokenGranter() {
         return new TokenGranter() {
@@ -251,5 +229,26 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 return delegate.grant(grantType, tokenRequest);
             }
         };
+    }
+
+    /**
+     * 这是从spring 的代码中 copy出来的,默认的几个 TokenGranter, 我们自定义的就加到这里就行了,目前我还没有加
+     */
+    private List<TokenGranter> getDefaultTokenGranters() {
+        ClientDetailsService clientDetails = clientDetails();
+        AuthorizationServerTokenServices tokenServices = tokenServices();
+        OAuth2RequestFactory requestFactory = requestFactory();
+
+        List<TokenGranter> tokenGranters = new ArrayList<>();
+        tokenGranters.add(new AuthorizationCodeTokenGranter(tokenServices, authorizationCodeServices(), clientDetails, requestFactory));
+        tokenGranters.add(new RefreshTokenGranter(tokenServices, clientDetails, requestFactory));
+        tokenGranters.add(new ImplicitTokenGranter(tokenServices, clientDetails, requestFactory));
+        tokenGranters.add(new ClientCredentialsTokenGranter(tokenServices, clientDetails, requestFactory));
+        if (authenticationManager != null) {
+            tokenGranters.add(new ResourceOwnerPasswordTokenGranter(authenticationManager, tokenServices, clientDetails, requestFactory));
+        }
+        // 增加一种验证码的认证模式
+        tokenGranters.add(new SMSCodeTokenGranter(tokenServices, clientDetails, requestFactory, userDetailsService, smsRecordService));
+        return tokenGranters;
     }
 }

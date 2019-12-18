@@ -42,7 +42,7 @@ public class SMSCodeTokenGranter extends AbstractTokenGranter {
     protected OAuth2Authentication getOAuth2Authentication(ClientDetails client,
                                                            TokenRequest tokenRequest) {
 
-        Map<String, String> parameters = new LinkedHashMap<String, String>(tokenRequest.getRequestParameters());
+        Map<String, String> parameters = new LinkedHashMap<>(tokenRequest.getRequestParameters());
         String userName = parameters.get("username");  //客户端提交的用户名
         String smsCode = parameters.get("smscode");  //客户端提交的验证码
 
@@ -52,19 +52,19 @@ public class SMSCodeTokenGranter extends AbstractTokenGranter {
             throw new InvalidGrantException("用户不存在");
         }
 
-        // 验证用户状态(是否警用等), 代码略
-
-        // 验证验证码,从缓存中查找验证码
-        String smsCodeCached = smsRecordService.getSMSCode(userName);
-        if (smsCodeCached == null || smsCodeCached.isEmpty()) {
-            throw new InvalidGrantException("用户没有发送验证码");
-        }
-        if (!smsCode.equals(smsCodeCached)) {
-            throw new InvalidGrantException("验证码不正确");
-        } else {
-            // 验证通过后从缓存中移除验证码, 代码略
-            smsRecordService.clearSMSCode(userName);
-        }
+//        // 验证用户状态(是否警用等), 代码略
+//
+//        // 验证验证码,从缓存中查找验证码
+//        String smsCodeCached = smsRecordService.getSMSCode(userName);
+//        if (smsCodeCached == null || smsCodeCached.isEmpty()) {
+//            throw new InvalidGrantException("用户没有发送验证码");
+//        }
+//        if (!smsCode.equals(smsCodeCached)) {
+//            throw new InvalidGrantException("验证码不正确");
+//        } else {
+//            // 验证通过后从缓存中移除验证码, 代码略
+//            smsRecordService.clearSMSCode(userName);
+//        }
 
 
         Authentication userAuth = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
