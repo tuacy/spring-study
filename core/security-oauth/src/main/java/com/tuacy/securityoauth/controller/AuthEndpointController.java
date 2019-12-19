@@ -18,6 +18,13 @@ import java.util.Map;
 @RestController
 public class AuthEndpointController {
 
+    /**
+     * 用于给第三方应用校验权限使用(spring cloud security)
+     * security:
+     *   oauth2:
+     *     resource:
+     *       user-info-uri: http://127.0.0.1:8101/security-service/auth/user
+     */
     @RequestMapping(value = {"/auth/user"}, produces = "application/json")
     public Map<String, Object> user(OAuth2Authentication user) {
         Map<String, Object> userInfo = new HashMap<>();
