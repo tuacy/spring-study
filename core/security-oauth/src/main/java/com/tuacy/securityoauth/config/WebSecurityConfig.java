@@ -41,7 +41,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     //对密码进行加密
                     @Override
                     public String encode(CharSequence charSequence) {
-                        System.out.println(charSequence.toString());
                         return DigestUtils.md5DigestAsHex(charSequence.toString().getBytes());
                     }
 
@@ -59,12 +58,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.requestMatchers()
-                .antMatchers("/oauth/**","/login","/login-error")
+                .antMatchers("/oauth/**", "/login", "/login-error")
                 .and()
                 .authorizeRequests()
                 .antMatchers("/oauth/**").authenticated()
                 .and()
-                .formLogin().loginPage( "/login" ).failureUrl( "/login-error" );
+                .formLogin().loginPage("/login").failureUrl("/login-error");
     }
 
 
