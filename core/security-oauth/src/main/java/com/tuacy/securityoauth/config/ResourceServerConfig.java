@@ -25,8 +25,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http.requestMatchers().antMatchers("/redisOauth", "/jwtOauth")
                 .and()
-                .authorizeRequests()
-                .antMatchers("/redisOauth", "/jwtOauth").authenticated();
+                .authorizeRequests() // //启用基于 HttpServletRequest 的访问限制，开始配置哪些URL需要被保护、哪些不需要被保护
+                .antMatchers("/redisOauth", "/jwtOauth").authenticated() // 配置 /redisOauth，/jwtOauth需要访问权限
+        ;
     }
 
 }

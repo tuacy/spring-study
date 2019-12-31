@@ -140,6 +140,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     /**
      * 用来配置令牌端点(Token Endpoint)的安全约束
+     * 对应于配置AuthorizationServer安全认证的相关信息，创建ClientCredentialsTokenEndpointFilter核心过滤器
      */
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
@@ -176,6 +177,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     /**
      * 用来配置授权（authorization）以及令牌（token）的访问端点和令牌服务(token services)
+     * 配置身份认证器，配置认证方式，TokenStore，TokenGranter，OAuth2RequestFactory
      */
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
