@@ -25,3 +25,7 @@ microservice/eureka/target
 
 microservice/zuul/zuul.iml
 microservice/zuul/target
+
+
+business/jta/jta.iml
+business/jta/target
