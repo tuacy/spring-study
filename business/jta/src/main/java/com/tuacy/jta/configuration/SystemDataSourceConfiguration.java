@@ -1,4 +1,4 @@
-package com.tuacy.jta.config;
+package com.tuacy.jta.configuration;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -21,31 +21,32 @@ import javax.sql.DataSource;
  * @Description:
  */
 @Configuration
-@MapperScan(basePackages = "com.tuacy.jta.mapper.business", sqlSessionFactoryRef = "sqlSessionFactoryBusiness")
-public class BusinessDatasourceConfig {
+// 精确到 mapper 目录，以便跟其他数据源隔离
+@MapperScan(basePackages = "com.tuacy.jta.mapper.system", sqlSessionFactoryRef = "sqlSessionFactorySystem")
+public class SystemDataSourceConfiguration {
 
-    private DataSource businessDataSource;
+    private DataSource systemDataSource;
 
     @Autowired
-    @Qualifier("businessDataSource")
-    public void setBusinessDataSource(DataSource businessDataSource) {
-        this.businessDataSource = businessDataSource;
+    @Qualifier("systemDataSource")
+    public void setSystemDataSource(DataSource systemDataSource) {
+        this.systemDataSource = systemDataSource;
     }
 
     @Bean
-    public SqlSessionFactory sqlSessionFactoryBusiness() throws Exception {
+    public SqlSessionFactory sqlSessionFactorySystem() throws Exception {
         SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
-        factoryBean.setDataSource(businessDataSource);
+        factoryBean.setDataSource(systemDataSource);
         //指定mapper xml目录
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        factoryBean.setMapperLocations(resolver.getResources("classpath*:/mapper/business/*.xml"));
+        factoryBean.setMapperLocations(resolver.getResources("classpath*:/mapper/system/*.xml"));
         return factoryBean.getObject();
 
     }
 
     @Bean
-    public SqlSessionTemplate sqlSessionTemplate2() throws Exception {
-        return new SqlSessionTemplate(sqlSessionFactoryBusiness()); // 使用上面配置的Factory
+    public SqlSessionTemplate sqlSessionTemplate() throws Exception {
+        return new SqlSessionTemplate(sqlSessionFactorySystem()); // 使用上面配置的Factory
     }
 
 

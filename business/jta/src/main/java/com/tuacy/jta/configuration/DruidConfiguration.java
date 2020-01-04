@@ -1,4 +1,4 @@
-package com.tuacy.jta.config;
+package com.tuacy.jta.configuration;
 
 import com.alibaba.druid.filter.stat.StatFilter;
 import com.alibaba.druid.support.http.StatViewServlet;
@@ -6,12 +6,15 @@ import com.alibaba.druid.support.http.WebStatFilter;
 import com.atomikos.icatch.jta.UserTransactionImp;
 import com.atomikos.icatch.jta.UserTransactionManager;
 import com.atomikos.jdbc.AtomikosDataSourceBean;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.transaction.jta.JtaTransactionManager;
 
 import javax.sql.DataSource;
@@ -26,9 +29,10 @@ import java.util.Map;
  * @version: 1.0
  * @Description:
  */
+@Slf4j
 @Configuration
 @EnableConfigurationProperties
-public class DruidConfig {
+public class DruidConfiguration {
 
     /**
      * 系统库配置前缀.
@@ -47,6 +51,14 @@ public class DruidConfig {
     public DataSource systemDataSource() {
         return new AtomikosDataSourceBean();
 
+    }
+
+    @Bean
+    @Primary
+    @ConfigurationProperties(prefix = "spring.datasource.druid.system-db")
+    public DataSourceProperties memberDataSourceProperties() {
+        DataSourceProperties dataSourceProperties = new DataSourceProperties();
+        return dataSourceProperties;
     }
 
     /**
