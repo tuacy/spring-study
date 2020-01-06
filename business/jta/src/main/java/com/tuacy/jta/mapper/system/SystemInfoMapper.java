@@ -14,4 +14,5 @@ public interface SystemInfoMapper {
 
     SystemInfo selectByPkId(@Param("pkId") String pkId);
 
+    int insert(@Param("pkId") String pkId, @Param("value") String value);
 }

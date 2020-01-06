@@ -1,5 +1,7 @@
 package com.tuacy.jta.controller;
 
+import com.tuacy.jta.entity.model.business.BusinessInfo;
+import com.tuacy.jta.entity.model.system.SystemInfo;
 import com.tuacy.jta.service.ITestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,13 +27,29 @@ public class TestController {
     }
 
     /**
-     * 获取区域树
+     * 测试system数据源是否配置正确
      */
     @RequestMapping(value = "/systemDbSourceTest", method = RequestMethod.POST)
-    public String listAreaTree() {
+    public String systemDbSourceTest() {
+        SystemInfo systemInfo = testService.getSystemInfo("1");
+        return "success";
+    }
 
-        testService.getBusinessInfo("1");
+    /**
+     * 测试business数据源是否配置正确
+     */
+    @RequestMapping(value = "/businessDbSourceTest", method = RequestMethod.POST)
+    public String businessDbSourceTest() {
+        BusinessInfo businessInfo = testService.getBusinessInfo("1");
+        return "success";
+    }
 
+    /**
+     * 测试分布式事务,写一个很简单的测试
+     */
+    @RequestMapping(value = "/transaction", method = RequestMethod.POST)
+    public String transactional() {
+        testService.transactional();
         return "success";
     }
 

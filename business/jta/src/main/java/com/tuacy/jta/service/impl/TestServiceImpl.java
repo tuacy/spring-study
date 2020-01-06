@@ -7,6 +7,7 @@ import com.tuacy.jta.mapper.system.SystemInfoMapper;
 import com.tuacy.jta.service.ITestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @name: TestServiceImpl
@@ -39,5 +40,14 @@ public class TestServiceImpl implements ITestService {
     @Override
     public SystemInfo getSystemInfo(String pkId) {
         return systemInfoMapper.selectByPkId(pkId);
+    }
+
+    @Transactional()
+    @Override
+    public void transactional() {
+        businessInfoMapper.insert("10", "10");
+        systemInfoMapper.insert("10", "10");
+        // 简单的抛出一个异常，只要上面的两个插入操作没有入库，就证明我们的配置成功
+        throw new NullPointerException("aaaa");
     }
 }

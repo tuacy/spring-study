@@ -6,9 +6,11 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.jta.atomikos.AtomikosDataSourceBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.Resource;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
@@ -25,8 +27,11 @@ import java.sql.SQLException;
 @MapperScan(basePackages = "com.tuacy.jta.mapper.business", sqlSessionTemplateRef = "businessSqlSessionTemplate")
 public class BusinessMyBatisConfig {
 
+    @Value("classpath*:mapper/business/*.xml")
+    private Resource[] mapperLocations;
+
     @Bean(name = "businessDataSource")
-    public DataSource testDataSource(BusinessDataSourceProperties testConfig) throws SQLException {
+    public DataSource businessDataSource(BusinessDataSourceProperties testConfig) throws SQLException {
         MysqlXADataSource mysqlXaDataSource = new MysqlXADataSource();
         mysqlXaDataSource.setUrl(testConfig.getUrl());
         mysqlXaDataSource.setPinGlobalTxToPhysicalConnection(true);
@@ -51,16 +56,20 @@ public class BusinessMyBatisConfig {
 
 
     @Bean(name = "businessSqlSessionFactory")
-    public SqlSessionFactory businessSqlSessionFactory(@Qualifier("businessDataSource") DataSource dataSource) throws Exception {
+    public SqlSessionFactory businessSqlSessionFactory(@Qualifier("businessDataSource") DataSource dataSource)
+            throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
+        //        /*加载mybatis全局配置文件*/
+//        bean.setConfigLocation(new PathMatchingResourcePatternResolver().getResource("classpath:mapper/mybatis-config.xml"));
+        /*加载所有的mapper.xml映射文件*/
+        bean.setMapperLocations(mapperLocations);
         return bean.getObject();
     }
 
 
     @Bean(name = "businessSqlSessionTemplate")
-    public SqlSessionTemplate businessSqlSessionTemplate(
-            @Qualifier("businessSqlSessionFactory") SqlSessionFactory sqlSessionFactory) throws Exception {
+    public SqlSessionTemplate businessSqlSessionTemplate(@Qualifier("businessSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
 

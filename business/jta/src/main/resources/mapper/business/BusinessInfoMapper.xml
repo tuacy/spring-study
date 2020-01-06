@@ -15,4 +15,10 @@
 
     </select>
 
+    <insert id="insert">
+
+        insert into business_info (pkid, `value`) values (#{pkId}, #{value})
+
+    </insert>
+
 </mapper>

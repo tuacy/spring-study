@@ -16,4 +16,6 @@ public interface ITestService {
 
     SystemInfo getSystemInfo(String pkId);
 
+    void transactional();
+
 }

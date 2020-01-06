@@ -14,4 +14,6 @@ public interface BusinessInfoMapper {
 
     BusinessInfo selectByPkId(@Param("pkId") String pkId);
 
+    int insert(@Param("pkId") String pkId, @Param("value") String value);
+
 }

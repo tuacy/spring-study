@@ -13,4 +13,10 @@
 
     </select>
 
+    <insert id="insert">
+
+        insert into system_info (pkid, `value`) values (#{pkId}, #{value})
+
+    </insert>
+
 </mapper>
