@@ -1,4 +1,4 @@
-spring-boot-starter-jta-atomikos 分布式事务解决方案
+spring-boot-starter-jta-atomikos 实现分布式事务解决方案
 
 首先分布式事务是基于多数据源的情况下解决在一个方法中调用不同的数据源,如何来进行事务管理的.
 
