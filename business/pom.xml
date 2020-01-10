@@ -14,6 +14,7 @@
     <modules>
         <module>user-manager</module>
         <module>jta</module>
+        <module>uid-generator</module>
     </modules>
 
     <dependencyManagement>

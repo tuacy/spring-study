@@ -29,3 +29,6 @@ microservice/zuul/target
 
 business/jta/jta.iml
 business/jta/target
+
+business/uid-generator/uid-generator.iml
+business/uid-generator/target
