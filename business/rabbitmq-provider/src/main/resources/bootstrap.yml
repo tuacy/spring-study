@@ -1,0 +1,9 @@
+server:
+  port: 8104
+
+info:
+  description: rabbitmq-provider
+
+spring:
+  application:
+    name: rabbitmq-provider

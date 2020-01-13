@@ -1,0 +1,9 @@
+server:
+  port: 8105
+
+info:
+  description: rabbitmq-consumer
+
+spring:
+  application:
+    name: rabbitmq-consumer

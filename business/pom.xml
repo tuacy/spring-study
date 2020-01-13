@@ -15,6 +15,8 @@
         <module>user-manager</module>
         <module>jta</module>
         <module>uid-generator</module>
+        <module>rabbitmq-provider</module>
+        <module>rabbitmq-consumer</module>
     </modules>
 
     <dependencyManagement>

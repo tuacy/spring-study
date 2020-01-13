@@ -32,3 +32,9 @@ business/jta/target
 
 business/uid-generator/uid-generator.iml
 business/uid-generator/target
+
+business/rabbitmq-consumer/rabbitmq-consumer.iml
+business/rabbitmq-consumer/target
+
+business/rabbitmq-provider/rabbitmq-provider.iml
+business/rabbitmq-provider/target
