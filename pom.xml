@@ -12,6 +12,7 @@
         <module>core</module>
         <module>business</module>
         <module>starter</module>
+        <module>collect</module>
     </modules>
     <packaging>pom</packaging>
     <name>spring-study</name>

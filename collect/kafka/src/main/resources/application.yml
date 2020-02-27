@@ -1,0 +1,25 @@
+server:
+  port: 8301
+
+info:
+  description: kafka
+
+spring:
+  application:
+    name: kafka
+
+  kafka:
+    # kafka服务地址
+    bootstrap-servers: localhost:9092
+    # 消费者
+    consumer:
+      group-id: test
+      auto-offset-reset: earliest
+      enable-auto-commit: false
+    # 生产者
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    listener:
+      ack-mode: manual
+

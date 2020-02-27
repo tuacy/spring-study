@@ -38,3 +38,8 @@ business/rabbitmq-consumer/target
 
 business/rabbitmq-provider/rabbitmq-provider.iml
 business/rabbitmq-provider/target
+
+collect/collect.iml
+
+collect/kafka/kafka.iml
+collect/kafka/target
