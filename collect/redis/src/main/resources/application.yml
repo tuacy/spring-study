@@ -1,0 +1,16 @@
+server:
+  port: 8302
+
+spring:
+  application:
+    name: redis
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+    jedis:
+      pool:
+        min-idle: 0
+        max-active: 8
+

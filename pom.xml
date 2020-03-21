@@ -13,6 +13,7 @@
         <module>business</module>
         <module>starter</module>
         <module>collect</module>
+        <module>common</module>
     </modules>
     <packaging>pom</packaging>
     <name>spring-study</name>
@@ -82,15 +83,7 @@
 
 
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <includeSystemScope>true</includeSystemScope>
-                </configuration>
-            </plugin>
-        </plugins>
+
     </build>
 
     <!-- 阿里云搭建了一个国内镜像http://maven.aliyun.com，跑起来速度很快，可以进行配置 -->
