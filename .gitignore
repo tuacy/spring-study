@@ -43,3 +43,13 @@ collect/collect.iml
 
 collect/kafka/kafka.iml
 collect/kafka/target
+
+
+# starter
+starter/lock-redisson-spring-boot/target
+starter/lock-redisson-spring-boot/lock-redisson-spring-boot.iml
+starter/lock-redisson-spring-boot/lock-redisson-spring-boot-autoconfigure/target
+starter/lock-redisson-spring-boot/lock-redisson-spring-boot-autoconfigure/lock-redisson-spring-boot-autoconfigure.iml
+starter/lock-redisson-spring-boot/lock-redisson-spring-boot-starter/targets
+starter/lock-redisson-spring-boot/lock-redisson-spring-boot-starter/lock-redisson-spring-boot-starter.iml
+/business/uid-generator/uid-generator.iml
