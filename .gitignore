@@ -46,12 +46,12 @@ collect/kafka/target
 
 
 # starter
-starter/lock-redisson-spring-boot/target
-starter/lock-redisson-spring-boot/lock-redisson-spring-boot.iml
-starter/lock-redisson-spring-boot/lock-redisson-spring-boot-autoconfigure/target
-starter/lock-redisson-spring-boot/lock-redisson-spring-boot-autoconfigure/lock-redisson-spring-boot-autoconfigure.iml
-starter/lock-redisson-spring-boot/lock-redisson-spring-boot-starter/targets
-starter/lock-redisson-spring-boot/lock-redisson-spring-boot-starter/lock-redisson-spring-boot-starter.iml
+starter/redisson-lock-spring-boot/target
+starter/redisson-lock-spring-boot/redisson-lock-spring-boot.iml
+starter/redisson-lock-spring-boot/redisson-lock-spring-boot-autoconfigure/target
+starter/redisson-lock-spring-boot/redisson-lock-spring-boot-autoconfigure/redisson-lock-spring-boot-autoconfigure.iml
+starter/redisson-lock-spring-boot/redisson-lock-spring-boot-starter/targets
+starter/redisson-lock-spring-boot/redisson-lock-spring-boot-starter/redisson-lock-spring-boot-starter.iml
 
 collect/redis/redis.iml
 collect/redis/target
