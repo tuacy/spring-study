@@ -5,7 +5,7 @@ package com.tuacy.redission.lock.spring.boot.autoconfigure;
  * @version 1.0
  * @date 2020/3/21 20:13
  */
-public enum ERedissionLockType {
+public enum RedissionLockType {
     /**
      * 可重入锁
      */

@@ -1,8 +1,8 @@
 package com.tuacy.collect.redis.service.impl;
 
 import com.tuacy.collect.redis.service.IRedissionLockMock;
-import com.tuacy.redission.lock.spring.boot.autoconfigure.ERedissionLockType;
-import com.tuacy.redission.lock.spring.boot.autoconfigure.RedissionLock;
+import com.tuacy.redission.lock.spring.boot.autoconfigure.RedissionLockType;
+import com.tuacy.redission.lock.spring.boot.autoconfigure.RedissionLockAnnotate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -15,19 +15,19 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class RedissionLockMockImpl implements IRedissionLockMock {
 
-    @RedissionLock(key = "'tuacy'", lockType = ERedissionLockType.FAIR_LOCK)
+    @RedissionLockAnnotate(key = "'tuacy'", lockType = RedissionLockType.FAIR_LOCK)
     @Override
     public void simpleLock() {
         log.info("进入函数");
     }
 
-    @RedissionLock(key = "#name", lockType = ERedissionLockType.FAIR_LOCK)
+    @RedissionLockAnnotate(key = "#name", lockType = RedissionLockType.FAIR_LOCK)
     @Override
     public void elPramLock(String name) {
         log.info("进入函数");
     }
 
-    @RedissionLock(key = "${micor-services.basic-sms:basic-sms-provider}", lockType = ERedissionLockType.FAIR_LOCK)
+    @RedissionLockAnnotate(key = "${micor-services.basic-sms:basic-sms-provider}", lockType = RedissionLockType.FAIR_LOCK)
     @Override
     public void elPropertyLock() {
 

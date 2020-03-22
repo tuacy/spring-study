@@ -46,7 +46,7 @@ public class RedissonLockAspectConfiguration {
         this.redissonClient = redissonClient;
     }
 
-    @Pointcut("@annotation(com.tuacy.redission.lock.spring.boot.autoconfigure.RedissionLock)")
+    @Pointcut("@annotation(com.tuacy.redission.lock.spring.boot.autoconfigure.RedissionLockAnnotate)")
     private void lockPoint() {
 
     }
@@ -57,26 +57,26 @@ public class RedissonLockAspectConfiguration {
         Method method = ((MethodSignature) pjp.getSignature()).getMethod();
         Object[] args = pjp.getArgs();
         // 找到添加在方法上的RedissionLock注解，获取响应的信息
-        RedissionLock lockAction = method.getAnnotation(RedissionLock.class);
+        RedissionLockAnnotate lockAction = method.getAnnotation(RedissionLockAnnotate.class);
         // Spring EL表达式
         String expression = lockAction.key();
         Objects.requireNonNull(expression, "请指定锁对应的key(Spring EL表达式)！");
         String lockKey = expressionParser(expression, method, args);
-        logger.debug("lock key is [{}]", lockKey);
+        logger.debug("锁对应的key [{}]", lockKey);
         // 获取锁
         RLock lock = getLock(lockKey, lockAction);
         if (!lock.tryLock(lockAction.waitTime(), lockAction.leaseTime(), lockAction.unit())) {
-            logger.debug("get lock failed [{}]", lockKey);
+            logger.debug("获取锁失败 [{}]", lockKey);
             return null;
         }
 
         // 得到锁,执行方法，释放锁
-        logger.debug("get lock success [{}]", lockKey);
+        logger.debug("获取锁成功 [{}]", lockKey);
         try {
             return pjp.proceed();
         } finally {
             lock.unlock();
-            logger.debug("release lock [{}]", lockKey);
+            logger.debug("释放锁 [{}]", lockKey);
         }
     }
 
@@ -98,7 +98,8 @@ public class RedissonLockAspectConfiguration {
         return expressionParser.parseExpression(el).getValue(context, String.class);
     }
 
-    private RLock getLock(String key, RedissionLock lockAction) {
+    private RLock getLock(String key, RedissionLockAnnotate lockAction) {
+        Objects.requireNonNull(lockAction, "锁的类型不能为空！");
         switch (lockAction.lockType()) {
             case REENTRANT_LOCK:
                 // 可重入锁
@@ -114,7 +115,7 @@ public class RedissonLockAspectConfiguration {
                 return redissonClient.getReadWriteLock(key).writeLock();
 
             default:
-                throw new RuntimeException("do not support lock type:" + lockAction.lockType().name());
+                throw new RuntimeException("不支持的锁类型:" + lockAction.lockType().name());
         }
     }
 }
