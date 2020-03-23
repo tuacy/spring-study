@@ -17,5 +17,14 @@
         <module>component-spring-boot</module>
     </modules>
 
+    <dependencies>
+
+        <dependency>
+            <groupId>com.tuacy</groupId>
+            <artifactId>common</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+
+    </dependencies>
 
 </project>

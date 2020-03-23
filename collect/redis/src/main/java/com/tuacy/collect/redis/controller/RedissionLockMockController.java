@@ -26,23 +26,20 @@ public class RedissionLockMockController extends BaseController {
 
     @RequestMapping(value = "/simple", method = RequestMethod.POST)
     public ResponseResult simpleLock() {
-        ResponseSingle<String> responseSingle = new ResponseSingle<>();
         redissionLockMock.simpleLock();
-        return setResult(responseSingle);
+        return setResult("ok");
     }
 
     @RequestMapping(value = "/elParam", method = RequestMethod.POST)
     public ResponseResult elParamLock() {
-        ResponseSingle<String> responseSingle = new ResponseSingle<>();
         redissionLockMock.elPramLock("wuyx");
-        return setResult(responseSingle);
+        return setResult("ok");
     }
 
     @RequestMapping(value = "/elProperty", method = RequestMethod.POST)
     public ResponseResult elPropertyLock() {
-        ResponseSingle<String> responseSingle = new ResponseSingle<>();
         redissionLockMock.elPropertyLock();
-        return setResult(responseSingle);
+        return setResult("ok");
     }
 
 }

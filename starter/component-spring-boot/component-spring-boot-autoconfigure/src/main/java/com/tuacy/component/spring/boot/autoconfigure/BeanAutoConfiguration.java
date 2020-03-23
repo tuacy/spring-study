@@ -1,5 +1,6 @@
 package com.tuacy.component.spring.boot.autoconfigure;
 
+import com.tuacy.component.spring.boot.advice.ResponseExceptionsHandler;
 import com.tuacy.component.spring.boot.conditional.OnPropertyExistCondition;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
@@ -17,6 +18,12 @@ public class BeanAutoConfiguration {
     @ConditionalOnMissingBean(OnPropertyExistCondition.class)
     public OnPropertyExistCondition onPropertyExistCondition() {
         return new OnPropertyExistCondition();
+    }
+
+    @Bean
+    @ConditionalOnMissingBean(ResponseExceptionsHandler.class)
+    public ResponseExceptionsHandler responseExceptionsHandler() {
+        return new ResponseExceptionsHandler();
     }
 
 }

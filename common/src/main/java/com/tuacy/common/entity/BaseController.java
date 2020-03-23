@@ -1,6 +1,6 @@
 package com.tuacy.common.entity;
 
-import java.util.Objects;
+import com.tuacy.common.utils.ResponseResultUtil;
 
 /**
  * @author wuyx
@@ -9,6 +9,10 @@ import java.util.Objects;
  */
 public abstract class BaseController {
 
+
+    public <T> ResponseResult<T> setResult(T data) {
+        return ResponseResultUtil.ok(data);
+    }
 
 
 }

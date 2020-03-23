@@ -45,6 +45,12 @@
             <version>${project.parent.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.tuacy</groupId>
+            <artifactId>component-spring-boot-starter</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+
     </dependencies>
 
 </project>
