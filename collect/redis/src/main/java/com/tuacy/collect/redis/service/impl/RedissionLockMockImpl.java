@@ -1,8 +1,8 @@
 package com.tuacy.collect.redis.service.impl;
 
 import com.tuacy.collect.redis.service.IRedissionLockMock;
-import com.tuacy.redission.lock.spring.boot.autoconfigure.RedissionLockType;
 import com.tuacy.redission.lock.spring.boot.autoconfigure.RedissionLockAnnotate;
+import com.tuacy.redission.lock.spring.boot.autoconfigure.RedissionLockType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

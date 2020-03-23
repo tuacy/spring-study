@@ -1,7 +1,7 @@
 package com.tuacy.common.utils;
 
-import com.tuacy.common.entity.ResponseErrorStatus;
-import com.tuacy.common.entity.ResponseResult;
+import com.tuacy.common.entity.ApiResponseErrorStatus;
+import com.tuacy.common.entity.ApiResponse;
 import com.tuacy.common.exception.ResponseException;
 
 /**
@@ -17,32 +17,59 @@ public class ResponseResultUtil {
     private ResponseResultUtil() {
     }
 
-    public static <T> ResponseResult<T> ok() {
-        return new ResponseResult<>(ResponseErrorStatus.SUCCESS);
+    public static <T> ApiResponse<T> ok() {
+        return new ApiResponse<>(ApiResponseErrorStatus.SUCCESS);
     }
 
-    public static <T> ResponseResult<T> ok(T data) {
-        return new ResponseResult<>(ResponseErrorStatus.SUCCESS.getCode(), ResponseErrorStatus.SUCCESS.getMessage(), data);
+    public static <T> ApiResponse<T> ok(T data) {
+        return new ApiResponse<>(ApiResponseErrorStatus.SUCCESS.getCode(), ApiResponseErrorStatus.SUCCESS.getMessage(), data);
     }
 
-    public static <T> ResponseResult<T> eroor() {
-        return new ResponseResult<>(ResponseErrorStatus.UNKNOWN_ERROR);
+    public static <T> ApiResponse<T> eroor() {
+        return new ApiResponse<>(ApiResponseErrorStatus.UNKNOWN_ERROR);
     }
 
-    public static <T> ResponseResult<T> error404() {
-        return new ResponseResult<>(ResponseErrorStatus.ERROR_404);
+    /**
+     * 400错误，bad request
+     */
+    public static <T> ApiResponse<T> error400() {
+        return new ApiResponse<>(ApiResponseErrorStatus.ERROR_400);
     }
 
-    public static <T> ResponseResult<T> error500() {
-        return new ResponseResult<>(ResponseErrorStatus.ERROR_500);
+    /**
+     * 401错误，未授权
+     */
+    public static <T> ApiResponse<T> error401() {
+        return new ApiResponse<>(ApiResponseErrorStatus.ERROR_401);
     }
 
-    public static <T> ResponseResult<T> eroor(ResponseException responseException) {
-        return new ResponseResult<>(responseException.getErrorStatus());
+    /**
+     * 403错误，权限不足
+     */
+    public static <T> ApiResponse<T> error403() {
+        return new ApiResponse<>(ApiResponseErrorStatus.ERROR_403);
     }
 
-    public static <T> ResponseResult<T> eroor(int code, String message) {
-        return new ResponseResult<>(code, message);
+    /**
+     * 404错误，处理器不存在异常，资源不存在异常
+     */
+    public static <T> ApiResponse<T> error404() {
+        return new ApiResponse<>(ApiResponseErrorStatus.ERROR_404);
+    }
+
+    /**
+     * 500异常,服务器内部错误
+     */
+    public static <T> ApiResponse<T> error500() {
+        return new ApiResponse<>(ApiResponseErrorStatus.ERROR_500);
+    }
+
+    public static <T> ApiResponse<T> eroor(ResponseException responseException) {
+        return new ApiResponse<>(responseException.getErrorStatus());
+    }
+
+    public static <T> ApiResponse<T> eroor(int code, String message) {
+        return new ApiResponse<>(code, message);
     }
 
 }
