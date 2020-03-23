@@ -54,7 +54,7 @@ public class RedissonLockAspectConfiguration {
     @Around("lockPoint()")
     public Object around(ProceedingJoinPoint pjp) throws Throwable {
         // 找到对应的方法
-        Method method = ((MethodSignature) pjp.getSignature()).getMethod();
+        Method method = getMethod(pjp);
         Object[] args = pjp.getArgs();
         // 找到添加在方法上的RedissionLock注解，获取响应的信息
         RedissionLockAnnotate lockAction = method.getAnnotation(RedissionLockAnnotate.class);
@@ -117,5 +117,28 @@ public class RedissonLockAspectConfiguration {
             default:
                 throw new RuntimeException("不支持的锁类型:" + lockAction.lockType().name());
         }
+    }
+
+    /**
+     * 从ProceedingJoinPoint里面获取方法
+     *
+     * @param joinPoint ProceedingJoinPoint
+     * @return 方法
+     */
+    private Method getMethod(ProceedingJoinPoint joinPoint) {
+        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
+        Method method = signature.getMethod();
+        if (method.getDeclaringClass().isInterface()) {
+            try {
+                method = joinPoint
+                        .getTarget()
+                        .getClass()
+                        .getDeclaredMethod(joinPoint.getSignature().getName(),
+                                method.getParameterTypes());
+            } catch (SecurityException | NoSuchMethodException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return method;
     }
 }

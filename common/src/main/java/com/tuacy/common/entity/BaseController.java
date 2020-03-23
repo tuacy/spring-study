@@ -9,30 +9,6 @@ import java.util.Objects;
  */
 public abstract class BaseController {
 
-    public ResponseResult setResult(ResponseSingle baseResp) {
-        Objects.requireNonNull(baseResp, "请设置结果！");
-        ResponseResult result = new ResponseResult();
-        ResultType resultType = baseResp.getResultType();
-        if (resultType == null) {
-            resultType = ResultType.SUCCESS;
-        }
-        result.setStatus(resultType.getValue());
-        result.setMsg(resultType.getDesc());
-        result.setData(baseResp.getRespData());
-        return result;
-    }
 
-    public ResponseResult setResult(ResponseList baseResp) {
-        Objects.requireNonNull(baseResp, "请设置结果！");
-        ResponseResult result = new ResponseResult();
-        ResultType resultType = baseResp.getResultType();
-        if (resultType == null) {
-            resultType = ResultType.SUCCESS;
-        }
-        result.setStatus(resultType.getValue());
-        result.setMsg(resultType.getDesc());
-        result.setData(baseResp.getRespData());
-        return result;
-    }
 
 }

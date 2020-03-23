@@ -3,7 +3,6 @@ package com.tuacy.collect.redis.controller;
 import com.tuacy.collect.redis.service.IRedissionLockMock;
 import com.tuacy.common.entity.BaseController;
 import com.tuacy.common.entity.ResponseResult;
-import com.tuacy.common.entity.ResponseSingle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

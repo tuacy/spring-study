@@ -8,10 +8,20 @@ import lombok.Data;
  * @date 2020/3/21 21:48
  */
 @Data
-public class ResponseResult {
+public class ResponseResult<T> {
 
-    private int status;
-    private String msg;
-    private Object data;
+    private int code;
+    private String message;
+    private T data;
 
+    public ResponseResult(ResponseErrorStatus errorStatus) {
+        this.code = errorStatus.getCode();
+        this.message = errorStatus.getMessage();
+    }
+
+    public ResponseResult(int code, String message, T data) {
+        this.code = code;
+        this.message = message;
+        this.data = data;
+    }
 }
