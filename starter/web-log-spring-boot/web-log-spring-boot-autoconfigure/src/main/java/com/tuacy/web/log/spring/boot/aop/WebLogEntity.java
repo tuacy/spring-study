@@ -1,25 +1,21 @@
-package com.tuacy.web.log.spring.boot.entity;
+package com.tuacy.web.log.spring.boot.aop;
 
 import lombok.Data;
 
 /**
- * Controller层的日志封装类
+ * api 访问日志封装
  *
- * @name: WebLog
+ * @name: WebLogEntity
  * @author: tuacy.
  * @date: 2020/3/24.
  * @version: 1.0
  */
 @Data
-public class WebLog {
+public class WebLogEntity {
     /**
      * 操作描述
      */
     private String description;
-    /**
-     * 操作用户
-     */
-    private String username;
 
     /**
      * 操作时间
@@ -29,7 +25,7 @@ public class WebLog {
     /**
      * 消耗时间
      */
-    private Integer spendTime;
+    private Long spendTime;
 
     /**
      * 根路径
@@ -59,11 +55,21 @@ public class WebLog {
     /**
      * 请求参数
      */
-    private Object parameter;
+    private String parameter;
 
     /**
      * 请求返回的结果
      */
-    private Object result;
+    private String result;
+
+    /**
+     * 请求是否成功
+     */
+    private boolean success;
+
+    /**
+     * 请求状态描述，如果请求失败，则该字段放到饿是异常信息
+     */
+    private String message;
 
 }

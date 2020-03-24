@@ -3,10 +3,14 @@ package com.tuacy.collect.redis.controller;
 import com.tuacy.collect.redis.service.IRedissionLockMock;
 import com.tuacy.common.entity.ApiBaseController;
 import com.tuacy.common.entity.ApiResponse;
+import com.tuacy.web.log.spring.boot.aop.WebLogOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @author wuyx
@@ -24,8 +28,9 @@ public class RedissionLockMockController extends ApiBaseController {
         this.redissionLockMock = redissionLockMock;
     }
 
+    @WebLogOperation()
     @RequestMapping(value = "/simple", method = RequestMethod.POST)
-    public ApiResponse simpleLock() {
+    public ApiResponse simpleLock(@RequestBody List<String> nameList) {
         redissionLockMock.simpleLock();
         return setResult("ok");
     }

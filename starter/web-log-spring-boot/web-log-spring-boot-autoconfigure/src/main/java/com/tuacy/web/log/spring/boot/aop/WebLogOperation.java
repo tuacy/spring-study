@@ -14,5 +14,24 @@ import java.lang.annotation.*;
 @Inherited
 public @interface WebLogOperation {
 
+    /**
+     * 描述信息
+     */
+    String desc() default "";
+
+    /**
+     * 是否需要保存ip
+     */
+    boolean ipRequire() default true;
+
+    /**
+     * 是否需要保存参数
+     */
+    boolean parameterRequire() default true;
+
+    /**
+     * 是否需要保存结果
+     */
+    boolean resultRequire() default true;
 
 }
