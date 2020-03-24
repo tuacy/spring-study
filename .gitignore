@@ -70,3 +70,12 @@ starter/component-spring-boot/component-spring-boot-starter/target
 
 common/common.iml
 common/target
+
+starter/web-log-spring-boot/web-log-spring-boot-autoconfigure/web-log-spring-boot-autoconfigure.iml
+starter/web-log-spring-boot/web-log-spring-boot-autoconfigure/target
+
+starter/web-log-spring-boot/web-log-spring-boot.iml
+starter/web-log-spring-boot/target
+
+starter/web-log-spring-boot/web-log-spring-boot-starter/web-log-spring-boot-starter.iml
+starter/web-log-spring-boot/web-log-spring-boot-starter/target
