@@ -16,6 +16,7 @@
         <module>redisson-lock-spring-boot</module>
         <module>component-spring-boot</module>
         <module>web-log-spring-boot</module>
+        <module>zookeeper-spring-boot</module>
     </modules>
 
     <dependencies>

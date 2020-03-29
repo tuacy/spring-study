@@ -79,3 +79,12 @@ starter/web-log-spring-boot/target
 
 starter/web-log-spring-boot/web-log-spring-boot-starter/web-log-spring-boot-starter.iml
 starter/web-log-spring-boot/web-log-spring-boot-starter/target
+
+starter/zookeeper-spring-boot/zookeeper-spring-boot.iml
+starter/zookeeper-spring-boot/target
+
+starter/zookeeper-spring-boot/zookeeper-spring-boot-starter/zookeeper-spring-boot-starter.iml
+starter/zookeeper-spring-boot/zookeeper-spring-boot-starter/target
+
+starter/zookeeper-spring-boot/zookeeper-spring-boot-autoconfigure/zookeeper-spring-boot-autoconfigure.iml
+starter/zookeeper-spring-boot/zookeeper-spring-boot-autoconfigure/target
