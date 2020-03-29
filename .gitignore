@@ -88,3 +88,6 @@ starter/zookeeper-spring-boot/zookeeper-spring-boot-starter/target
 
 starter/zookeeper-spring-boot/zookeeper-spring-boot-autoconfigure/zookeeper-spring-boot-autoconfigure.iml
 starter/zookeeper-spring-boot/zookeeper-spring-boot-autoconfigure/target
+
+collect/elasticsearch/elasticsearch.iml
+collect/elasticsearch/target
