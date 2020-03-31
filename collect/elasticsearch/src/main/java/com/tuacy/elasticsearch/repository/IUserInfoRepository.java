@@ -1,4 +1,4 @@
-package com.tuacy.elasticsearch.dao;
+package com.tuacy.elasticsearch.repository;
 
 import com.tuacy.elasticsearch.entity.UserInfo;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;

@@ -1,6 +1,6 @@
 package com.tuacy.elasticsearch.service.impl;
 
-import com.tuacy.elasticsearch.dao.IUserInfoRepository;
+import com.tuacy.elasticsearch.repository.IUserInfoRepository;
 import com.tuacy.elasticsearch.entity.UserInfo;
 import com.tuacy.elasticsearch.service.IElasticsearchMockService;
 import org.springframework.beans.factory.annotation.Autowired;
