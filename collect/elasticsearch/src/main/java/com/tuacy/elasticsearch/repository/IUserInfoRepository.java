@@ -8,7 +8,6 @@ import org.springframework.data.elasticsearch.repository.ElasticsearchRepository
  * @author: tuacy.
  * @date: 2020/3/30.
  * @version: 1.0
- * @Description:
  */
 public interface IUserInfoRepository extends ElasticsearchRepository<UserInfo, Long> {
 

@@ -1,7 +1,7 @@
 package com.tuacy.common.utils;
 
-import com.tuacy.common.entity.ApiResponseErrorStatus;
-import com.tuacy.common.entity.ApiResponse;
+import com.tuacy.common.entity.response.ApiResponseErrorStatus;
+import com.tuacy.common.entity.response.ApiResponse;
 import com.tuacy.common.exception.ResponseException;
 
 /**
@@ -25,7 +25,7 @@ public class ResponseResultUtil {
         return new ApiResponse<>(ApiResponseErrorStatus.SUCCESS.getCode(), ApiResponseErrorStatus.SUCCESS.getMessage(), data);
     }
 
-    public static <T> ApiResponse<T> eroor() {
+    public static <T> ApiResponse<T> error() {
         return new ApiResponse<>(ApiResponseErrorStatus.UNKNOWN_ERROR);
     }
 
@@ -64,11 +64,11 @@ public class ResponseResultUtil {
         return new ApiResponse<>(ApiResponseErrorStatus.ERROR_500);
     }
 
-    public static <T> ApiResponse<T> eroor(ResponseException responseException) {
+    public static <T> ApiResponse<T> error(ResponseException responseException) {
         return new ApiResponse<>(responseException.getErrorStatus());
     }
 
-    public static <T> ApiResponse<T> eroor(int code, String message) {
+    public static <T> ApiResponse<T> error(int code, String message) {
         return new ApiResponse<>(code, message);
     }
 

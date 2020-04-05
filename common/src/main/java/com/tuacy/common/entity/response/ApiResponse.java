@@ -1,4 +1,4 @@
-package com.tuacy.common.entity;
+package com.tuacy.common.entity.response;
 
 import java.io.Serializable;
 
@@ -10,6 +10,7 @@ import java.io.Serializable;
  * @date 2020/3/21 21:48
  */
 public class ApiResponse<T> implements Serializable {
+    private static final long serialVersionUID = -8970366016772121871L;
 
     /**
      * 状态值
@@ -23,6 +24,8 @@ public class ApiResponse<T> implements Serializable {
      * 结果
      */
     private T data;
+
+    public ApiResponse() {}
 
     public ApiResponse(ApiResponseErrorStatus errorStatus) {
         this.code = errorStatus.getCode();

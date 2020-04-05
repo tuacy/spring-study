@@ -1,4 +1,4 @@
-package com.tuacy.common.entity;
+package com.tuacy.common.entity.response;
 
 import lombok.Data;
 

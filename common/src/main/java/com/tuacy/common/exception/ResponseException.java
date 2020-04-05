@@ -1,6 +1,6 @@
 package com.tuacy.common.exception;
 
-import com.tuacy.common.entity.ApiResponseErrorStatus;
+import com.tuacy.common.entity.response.ApiResponseErrorStatus;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

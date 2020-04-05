@@ -1,6 +1,6 @@
 package com.tuacy.component.spring.boot.advice;
 
-import com.tuacy.common.entity.ApiResponse;
+import com.tuacy.common.entity.response.ApiResponse;
 import com.tuacy.common.exception.*;
 import com.tuacy.common.utils.ResponseResultUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -48,7 +48,7 @@ public class ResponseExceptionsHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(value = ResponseException.class)
     public ApiResponse<?> bizExceptionHandler(Exception exception) {
         log.error("请求异常", exception);
-        return ResponseResultUtil.eroor((ResponseException) exception);
+        return ResponseResultUtil.error((ResponseException) exception);
     }
 
     /**
