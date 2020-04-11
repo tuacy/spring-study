@@ -3,6 +3,7 @@ package com.tuacy.elasticsearch.service.impl;
 import cn.hutool.core.util.StrUtil;
 import com.google.common.base.Preconditions;
 import com.tuacy.elasticsearch.service.IElasticsearchIndexMockService;
+import org.elasticsearch.client.indices.CreateIndexRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.stereotype.Service;

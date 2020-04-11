@@ -16,7 +16,7 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@Document(indexName = EsConstant.INDEX_NAME.STUDY, type = "user")
+@Document(indexName = EsConstant.INDEX_NAME.STUDY, type = "_doc")
 public class UserInfo extends EsBaseEntity {
     private static final long serialVersionUID = 1814417843616675054L;
 
@@ -29,19 +29,19 @@ public class UserInfo extends EsBaseEntity {
     /**
      * 年龄
      */
-    @Field()
+    @Field(type = FieldType.Short)
     private short age;
 
     /**
      * 性别
      */
-    @Field()
+    @Field(type = FieldType.Byte)
     private byte sex;
 
     /**
      * 电话号码
      */
-    @Field()
+    @Field(type = FieldType.Text)
     private String phone;
 
 

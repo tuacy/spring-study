@@ -18,19 +18,34 @@ import java.util.List;
 public interface IElasticsearchCURDMockService {
 
     /**
-     * 记录增加
+     * 插入单挑记录
      */
     UserInfo insert(UserInfo userInfo);
 
     /**
-     * 记录删除
+     * 批量插入
+     */
+    Iterable<UserInfo> insertBatch(List<UserInfo> userInfoList);
+
+    /**
+     * 删除单个记录
      */
     void delete(String id);
 
     /**
-     * 记录修改
+     * 批量删除
      */
-    UserInfo update(UserInfo userInfo);
+    void deleteBatch(List<String> idList);
+
+    /**
+     * 修改单个记录
+     */
+    boolean update(UserInfo userInfo);
+
+    /**
+     * 批量修改记录
+     */
+    boolean updateBatch(List<UserInfo> userInfoList);
 
     /**
      * 根据主键查找记录
@@ -51,5 +66,10 @@ public interface IElasticsearchCURDMockService {
      * 多条件查询
      */
     List<UserInfo> queryMultiCondition(String name, int age);
+
+    /**
+     * 高亮查询
+     */
+    PageEntity<UserInfo> highlightQuery(int pageNo, int pageSize, String name);
 
 }
