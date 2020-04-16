@@ -71,14 +71,14 @@ starter/component-spring-boot/component-spring-boot-starter/target
 common/common.iml
 common/target
 
-starter/web-log-spring-boot/web-log-spring-boot-autoconfigure/web-log-spring-boot-autoconfigure.iml
-starter/web-log-spring-boot/web-log-spring-boot-autoconfigure/target
+starter/log-spring-boot/log-spring-boot-autoconfigure/log-spring-boot-autoconfigure.iml
+starter/log-spring-boot/log-spring-boot-autoconfigure/target
 
-starter/web-log-spring-boot/web-log-spring-boot.iml
-starter/web-log-spring-boot/target
+starter/log-spring-boot/log-spring-boot.iml
+starter/log-spring-boot/target
 
-starter/web-log-spring-boot/web-log-spring-boot-starter/web-log-spring-boot-starter.iml
-starter/web-log-spring-boot/web-log-spring-boot-starter/target
+starter/log-spring-boot/log-spring-boot-starter/log-spring-boot-starter.iml
+starter/log-spring-boot/log-spring-boot-starter/target
 
 starter/zookeeper-spring-boot/zookeeper-spring-boot.iml
 starter/zookeeper-spring-boot/target

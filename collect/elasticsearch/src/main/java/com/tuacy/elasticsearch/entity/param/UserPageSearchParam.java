@@ -1,6 +1,6 @@
 package com.tuacy.elasticsearch.entity.param;
 
-import com.tuacy.common.entity.param.BasePageParam;
+import com.tuacy.common.api.param.BasePageParam;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

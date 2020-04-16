@@ -15,6 +15,11 @@ spring:
     database: 0
     jedis:
       pool:
-        min-idle: 0
         max-active: 8
+        #  获取连接时的最大等待毫秒数,小于零:阻塞不确定的时间,默认-1
+        max-wait: -1
+        # 最大空闲连接数
+        max-idle: 8
+        # 最小空闲连接数
+        min-idle: 0
 

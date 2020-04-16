@@ -1,8 +1,9 @@
 package com.tuacy.elasticsearch.entity.param;
 
-import com.tuacy.common.entity.param.BaseParam;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
 
 /**
  * @author wuyx
@@ -11,7 +12,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class UserMultiConditionSearchParam extends BaseParam {
+public class UserMultiConditionSearchParam implements Serializable {
     private static final long serialVersionUID = 5563663280283085281L;
 
     private String name;

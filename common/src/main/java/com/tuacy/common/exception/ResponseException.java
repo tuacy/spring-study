@@ -1,6 +1,6 @@
 package com.tuacy.common.exception;
 
-import com.tuacy.common.entity.response.ApiResponseErrorStatus;
+import com.tuacy.common.api.response.ResponseErrorStatus;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -18,9 +18,9 @@ public class ResponseException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
 
-    private ApiResponseErrorStatus errorStatus;
+    private ResponseErrorStatus errorStatus;
 
-    public ResponseException(ApiResponseErrorStatus status) {
+    public ResponseException(ResponseErrorStatus status) {
         super(status.getMessage());
         this.errorStatus = status;
     }

@@ -1,7 +1,7 @@
 package com.tuacy.elasticsearch.controller;
 
-import com.tuacy.common.entity.ApiBaseController;
-import com.tuacy.common.entity.response.ApiResponse;
+import com.tuacy.common.api.controller.BaseController;
+import com.tuacy.common.api.response.Response;
 import com.tuacy.elasticsearch.service.IElasticsearchIndexMockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/v1/elasticsearch/index")
-public class ElasticsearchIndexMockController extends ApiBaseController {
+public class ElasticsearchIndexMockController extends BaseController {
 
     private IElasticsearchIndexMockService elasticsearchIndexMockService;
 
@@ -28,17 +28,17 @@ public class ElasticsearchIndexMockController extends ApiBaseController {
     }
 
     @RequestMapping(value = "/crate", method = RequestMethod.POST)
-    public ApiResponse<?> indexCreate(@RequestBody String index) {
+    public Response<?> indexCreate(@RequestBody String index) {
         return setResult(elasticsearchIndexMockService.indexCreate(index));
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public ApiResponse<?> indexDelete(@RequestBody String index) {
+    public Response<?> indexDelete(@RequestBody String index) {
         return setResult(elasticsearchIndexMockService.indexDelete(index));
     }
 
     @RequestMapping(value = "/exists", method = RequestMethod.POST)
-    public ApiResponse<?> indexExists(@RequestBody String index) {
+    public Response<?> indexExists(@RequestBody String index) {
         return setResult(elasticsearchIndexMockService.indexExists(index));
     }
 

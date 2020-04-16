@@ -1,10 +1,7 @@
 package com.tuacy.component.spring.boot.autoconfigure;
 
-import com.tuacy.component.spring.boot.advice.ResponseExceptionsHandler;
-import com.tuacy.component.spring.boot.conditional.OnPropertyExistCondition;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 /**
  * @author wuyx
@@ -12,18 +9,12 @@ import org.springframework.context.annotation.Configuration;
  * @date 2020/3/21 21:05
  */
 @Configuration
+@Import(
+        {
+                BeanConfigurations.PropertyConditionBuilderConfiguration.class,
+                BeanConfigurations.ExceptionHandlerBuilderConfiguration.class,
+                BeanConfigurations.ValidatorBuilderConfiguration.class
+        }
+)
 public class BeanAutoConfiguration {
-
-    @Bean
-    @ConditionalOnMissingBean(OnPropertyExistCondition.class)
-    public OnPropertyExistCondition onPropertyExistCondition() {
-        return new OnPropertyExistCondition();
-    }
-
-    @Bean
-    @ConditionalOnMissingBean(ResponseExceptionsHandler.class)
-    public ResponseExceptionsHandler responseExceptionsHandler() {
-        return new ResponseExceptionsHandler();
-    }
-
 }

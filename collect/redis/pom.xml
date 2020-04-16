@@ -53,7 +53,7 @@
 
         <dependency>
             <groupId>com.tuacy</groupId>
-            <artifactId>web-log-spring-boot-starter</artifactId>
+            <artifactId>log-spring-boot-starter</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
 

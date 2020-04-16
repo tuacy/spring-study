@@ -1,4 +1,0 @@
-# Auto Configure
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.tuacy.web.log.spring.boot.autoconfigure.WebLogAutoConfiguration,\
-com.tuacy.web.log.spring.boot.autoconfigure.BizLogAutoConfiguration

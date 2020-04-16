@@ -1,8 +1,8 @@
 package com.tuacy.elasticsearch.controller;
 
-import com.tuacy.common.entity.ApiBaseController;
-import com.tuacy.common.entity.response.ApiPageResponse;
-import com.tuacy.common.entity.response.ApiResponse;
+import com.tuacy.common.api.controller.BaseController;
+import com.tuacy.common.api.response.PageResponse;
+import com.tuacy.common.api.response.Response;
 import com.tuacy.elasticsearch.entity.UserInfo;
 import com.tuacy.elasticsearch.entity.param.HighlightSearchParam;
 import com.tuacy.elasticsearch.entity.param.UserMultiConditionSearchParam;
@@ -27,7 +27,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/v1/elasticsearch/CURD")
-public class ElasticsearchCURDMockController extends ApiBaseController {
+public class ElasticsearchCURDMockController extends BaseController {
 
     private IElasticsearchCURDMockService elasticsearchMockService;
 
@@ -40,7 +40,7 @@ public class ElasticsearchCURDMockController extends ApiBaseController {
      * 插入单个记录
      */
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
-    public ApiResponse<?> insert(@RequestBody UserInfo userInfo) {
+    public Response<?> insert(@RequestBody UserInfo userInfo) {
         return setResult(elasticsearchMockService.insert(userInfo));
     }
 
@@ -48,7 +48,7 @@ public class ElasticsearchCURDMockController extends ApiBaseController {
      * 插入多条记录
      */
     @RequestMapping(value = "/insertBatch", method = RequestMethod.POST)
-    public ApiResponse<?> insertBatch(@RequestBody List<UserInfo> userList) {
+    public Response<?> insertBatch(@RequestBody List<UserInfo> userList) {
         return setResult(elasticsearchMockService.insertBatch(userList));
     }
 
@@ -56,7 +56,7 @@ public class ElasticsearchCURDMockController extends ApiBaseController {
      * 删除单个记录
      */
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public ApiResponse<?> delete(@RequestBody String id) {
+    public Response<?> delete(@RequestBody String id) {
         elasticsearchMockService.delete(id);
         return setResult();
     }
@@ -65,7 +65,7 @@ public class ElasticsearchCURDMockController extends ApiBaseController {
      * 批量删除
      */
     @RequestMapping(value = "/deleteBatch", method = RequestMethod.POST)
-    public ApiResponse<?> deleteBatch(@RequestBody List<String> idList) {
+    public Response<?> deleteBatch(@RequestBody List<String> idList) {
         elasticsearchMockService.deleteBatch(idList);
         return setResult();
     }
@@ -74,7 +74,7 @@ public class ElasticsearchCURDMockController extends ApiBaseController {
      * 修改记录
      */
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public ApiResponse<?> update(@RequestBody UserInfo userInfo) {
+    public Response<?> update(@RequestBody UserInfo userInfo) {
         elasticsearchMockService.update(userInfo);
         return setResult();
     }
@@ -83,7 +83,7 @@ public class ElasticsearchCURDMockController extends ApiBaseController {
      * 批量修改记录
      */
     @RequestMapping(value = "/updateBatch", method = RequestMethod.POST)
-    public ApiResponse<?> updateBatch(@RequestBody List<UserInfo> userInfoList) {
+    public Response<?> updateBatch(@RequestBody List<UserInfo> userInfoList) {
         elasticsearchMockService.updateBatch(userInfoList);
         return setResult();
     }
@@ -92,7 +92,7 @@ public class ElasticsearchCURDMockController extends ApiBaseController {
      * 根据主键查询
      */
     @RequestMapping(value = "/searchById", method = RequestMethod.POST)
-    public ApiResponse<?> searchById(@RequestBody String id) {
+    public Response<?> searchById(@RequestBody String id) {
         return setResult(elasticsearchMockService.queryById(id));
     }
 
@@ -100,7 +100,7 @@ public class ElasticsearchCURDMockController extends ApiBaseController {
      * 通过某个字段去查询
      */
     @RequestMapping(value = "/searchByName", method = RequestMethod.POST)
-    public ApiResponse<?> searchByName(@RequestBody String name) {
+    public Response<?> searchByName(@RequestBody String name) {
         return setResult(elasticsearchMockService.queryByName(name));
     }
 
@@ -108,12 +108,12 @@ public class ElasticsearchCURDMockController extends ApiBaseController {
      * 分页查询
      */
     @RequestMapping(value = "/searchByPage", method = RequestMethod.POST)
-    public ApiPageResponse<?> searchByPage(@RequestBody UserPageSearchParam param) {
+    public PageResponse<?> searchByPage(@RequestBody UserPageSearchParam param) {
         return setPageResult(elasticsearchMockService.pageQuery(param.getPageNo(), param.getPageSize(), param.getName()));
     }
 
     @RequestMapping(value = "/searchMultiCondition", method = RequestMethod.POST)
-    public ApiResponse<?> searchMultiCondition(@RequestBody UserMultiConditionSearchParam param) {
+    public Response<?> searchMultiCondition(@RequestBody UserMultiConditionSearchParam param) {
         return setResult(elasticsearchMockService.queryMultiCondition(param.getName(), param.getAge()));
     }
 
@@ -121,7 +121,7 @@ public class ElasticsearchCURDMockController extends ApiBaseController {
      * 高亮查询
      */
     @RequestMapping(value = "/searchHighlight", method = RequestMethod.POST)
-    public ApiResponse<?> searchHighlight(@RequestBody HighlightSearchParam param) {
+    public Response<?> searchHighlight(@RequestBody HighlightSearchParam param) {
         return setPageResult(elasticsearchMockService.highlightQuery(param.getPageNo(), param.getPageSize(), param.getName()));
     }
 }
