@@ -2,7 +2,9 @@ package com.tuacy.component.spring.boot.autoconfigure;
 
 import com.tuacy.component.spring.boot.advice.ResponseExceptionsHandler;
 import com.tuacy.component.spring.boot.conditional.OnPropertyExistCondition;
+import com.tuacy.component.spring.boot.data.redis.impl.RedisCommand;
 import org.hibernate.validator.HibernateValidator;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -62,6 +64,16 @@ class BeanConfigurations {
             return validatorFactory.getValidator();
         }
 
+    }
+
+    @Configuration(proxyBeanMethods = false)
+    static class RedisBuilderConfiguration {
+
+        @ConditionalOnBean()
+        @ConditionalOnMissingBean
+        public RedisCommand redisCommand() {
+            return new RedisCommand();
+        }
     }
 
 }

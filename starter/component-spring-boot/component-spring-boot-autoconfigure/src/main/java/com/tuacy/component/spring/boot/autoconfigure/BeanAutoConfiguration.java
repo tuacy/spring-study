@@ -13,7 +13,8 @@ import org.springframework.context.annotation.Import;
         {
                 BeanConfigurations.PropertyConditionBuilderConfiguration.class,
                 BeanConfigurations.ExceptionHandlerBuilderConfiguration.class,
-                BeanConfigurations.ValidatorBuilderConfiguration.class
+                BeanConfigurations.ValidatorBuilderConfiguration.class,
+                BeanConfigurations.RedisBuilderConfiguration.class
         }
 )
 public class BeanAutoConfiguration {
