@@ -1,0 +1,7 @@
+server:
+  port: 8304
+
+spring:
+  application:
+    name: mybatis
+

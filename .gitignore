@@ -91,3 +91,5 @@ starter/zookeeper-spring-boot/zookeeper-spring-boot-autoconfigure/target
 
 collect/elasticsearch/elasticsearch.iml
 collect/elasticsearch/target
+collect/mybatis/mybatis.iml
+collect/mybatis/target
