@@ -93,3 +93,6 @@ collect/elasticsearch/elasticsearch.iml
 collect/elasticsearch/target
 collect/mybatis/mybatis.iml
 collect/mybatis/target
+
+collect/retry/retry.iml
+collect/retry/target
