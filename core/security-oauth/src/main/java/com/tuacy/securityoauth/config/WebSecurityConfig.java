@@ -15,6 +15,8 @@ import org.springframework.util.DigestUtils;
 import java.util.Objects;
 
 /**
+ * 配置认证服务
+ *
  * @name: WebSecurityConfig
  * @author: tuacy.
  * @date: 2019/11/28.
@@ -69,6 +71,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * 注入AuthenticationManager接口，启用OAuth2密码模式
+     *
+     * 认证管理器，OAuth的密码模式需要使用
      */
     @Bean
     @Override

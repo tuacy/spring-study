@@ -11,7 +11,6 @@ import java.io.Serializable;
  * @date 2020/4/6 0:39
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
 public class UserMultiConditionSearchParam implements Serializable {
     private static final long serialVersionUID = 5563663280283085281L;
 
